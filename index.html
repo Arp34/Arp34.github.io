@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./icon/logo.ico" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/hero.css">
+    <link rel="stylesheet" href="./css/events.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/multimedia.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <title>The Shattered Riffs</title>
+</head>
+<body>
+    <!-- HEADER — Semántico, Flexbox-->
+    <header>
+        <a href="#home" class="logo">
+        <span class="logo-icon">⚡</span>
+        <div class="logo-text">
+            The Shattered Riffs
+        </div>
+        </a>
+
+        <!-- Nav desktop -->
+        <nav>
+            <a href="#events">Events</a>
+            <a href="#about">About</a>
+            <a href="#multimedia">Media</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <!-- Botón hamburger (mobile) -->
+         <button class="hamburger" id="hamburger" aiar-label="Toggle menu">
+            <span class="barras">☰</span>
+         </button>
+
+         
+    </header>
+
+    <!-- Nav mobile overlay -->
+     <div class="mobile-nav" id="mobilenav">
+        <a href="#events" onclick="closeMobileNav()">Events</a>
+        <a href="#about" onclick="closeMobileNav()">About</a>
+        <a href="#multimedia" onclick="closeMobileNav()">Media</a>
+        <a href="#contact" onclick="closeMobileNav()">Contact</a>
+     </div>
+
+     <!--HERO — Visual impact + CTA -->
+    <section class="hero" id="home">
+    <div class="hero-bg"></div>
+        <div class="hero-content">
+        <span class="hero-tag">✦ Now Open ✦ Barranquilla, Colombia</span>
+            <h1><em>The Shattered Riffs</em></h1>
+            <p>ROCK THE NIGHT - UPCOMING TOUR</p>
+            <a href="#events" class="btn">View all Events</a>
+        </div>
+    </section>
+
+    <!-- EVENTS — HTML Table-->
+     <section class="events" id="events">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="divider"></div>
+        <p class="section-sub"> Join us on our upcoming tour!</p>
+        
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>City</th>
+                        <th>Venue</th>
+                        <th>Tickets</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>June 15, 2024</td>
+                        <td>Barranquilla, Colombia</td>
+                        <td>Estadio Metropolitano</td>
+                        <td><span class="badge">Buy Tickets</span></td>
+                    </tr>
+                    <tr>
+                        <td>July 20, 2024</td>
+                        <td>Lima, Peru</td>
+                        <td>Arena Perú</td>
+                        <td><span class="badge">Buy Tickets</span></td>
+                    </tr>
+                    <tr>
+                        <td>August 10, 2024</td>
+                        <td>Santiago, Chile</td>
+                        <td>Estadio Nacional</td>
+                        <td><span class="badge sold">Sold Out</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!--ABOUT — Imagen + lista <ul>-->
+    <section class="about" id=about>
+        <div class="about-grid">
+            <div class="about-img">
+                <img src="./img/img-2.jpg" alt="The Shattered Riffs">
+            </div>
+            <div class="about-text">
+                <h2>About the Band</h2>
+                <div class="divider"></div>
+                <p>
+                    The Shattered Riffs is a dynamic rock band that has been captivating audiences across Latin America. With their electrifying performances and innovative sound, they have established themselves as one of the most exciting acts in the region.
+                </p>
+
+                <p class="values-title">Our Values</p>
+                <ul class="values-list">
+                    <li>Passion</li>
+                    <li>Integrity</li>
+                    <li>Creativity</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!--MULTIMEDIA — CSS Grid-->
+    <section class="multimedia" id="multimedia">
+        <h2 class="section-title">Multimedia</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Experience the energy of The Shattered Riffs through our multimedia gallery.</p>
+
+        <div class="media-grid">
+            <figure class="media-item">
+                <img src="./img/img-1.jpg" alt="The Shattered Riffs 1">
+                <div class="overlay"></div>
+            </figure>
+            <figure class="media-item">
+                <img src="./img/img-3.jpg" alt="The Shattered Riffs 3">
+                <div class="overlay"></div>
+            </figure>
+            <figure class="media-item">
+                <img src="./img/img-4.jpg" alt="The Shattered Riffs 4">
+                <div class="overlay"></div>
+            </figure>
+            <figure class="media-item">
+                <img src="./img/img-5.jpg" alt="The Shattered Riffs 5">
+                <div class="overlay"></div> 
+            </figure>
+            <figure class="media-item">
+                <img src="./img/img-6.jpg" alt="The Shattered Riffs 6">
+                <div class="overlay"></div>
+            </figure>
+            <div class="video-placeholder">
+                <iframe class="play-btn" src="https://www.youtube.com/embed/OspIA4akQeI?si=rT-fS2n7FR9QwCtY" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!--FOOTER — Semántico-->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Events</h4>
+                <ul>
+                    <li>Upcoming Tour</li>
+                    <li>Past Events</li>
+                    <li>Event Gallery</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About</h4>
+                <ul>
+                    <li>Band History</li>
+                    <li>Members</li>
+                    <li>Press</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Media</h4>
+                <ul>
+                    <li>Photo Gallery</li>
+                    <li>Videos</li>
+                    <li>Music</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>
+                    Email: info@theshatteredriffs.com<br>
+                    Phone: +1 (555) 123-4567<br>
+                    Address: 123 Rock St, Music City, USA
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Shattered Riffs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="./js/nav.js"></script>
+
+</body>
+</html>

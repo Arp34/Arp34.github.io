@@ -1,0 +1,82 @@
+/* Variables CSS */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+    --black: #000;
+    --white: #fff;
+    --text: #a0a0a0;
+    --red: #ff2e2e;
+    --black_red: #8b0000;
+    --gray: #2b2b2b;
+    --red-hover: #b42f2f;
+    --black_gray: #1a1a1a;
+    --white_gray: #b9b9b9;
+
+    --header-height: 64px;
+    --max-width: 1000px;
+    --section-padding: 5rem 2rem;
+
+}   
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background-color: var(--gray);
+}
+
+/*SHARED SECTION STYLES*/
+section {
+    padding: var(--section-padding);
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.section-sub {
+    text-align: center;
+    color: var(--text);
+    font-size: 0.9rem;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.05em;
+}   
+
+.divider {
+    width: 48px;
+    height: 3px;
+    background-color: var(--red);
+    margin: 0.5rem auto 2rem;
+    border-radius: 2px;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--black_red);
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.85rem 2.2rem;
+    border-radius: 3px;
+    transition: background-color 0.2s transform 0.15s;
+}
+
+.btn:hover {
+    background-color: var(--red-hover);
+    transform: translateY(-2px);
+}

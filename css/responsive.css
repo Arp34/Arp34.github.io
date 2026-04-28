@@ -1,0 +1,59 @@
+/*responsive.css — Media queries (mobile first)*/
+
+/* ── Tablet / small desktop (≤ 1024px) ── */
+@media (max-width: 1024px) {
+
+  nav          { display: none; }
+  .hamburger   { display: flex; }
+
+  /* About: unique column */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-text .divider {
+    margin: 0.6rem 0 1.2rem;
+  }
+
+  /* Footer: 2 columnas */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Mobile (≤ 640px) ── */
+@media (max-width: 640px) {
+  header {
+    padding: 0 1.2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  /* Media grid: 2 columnas */
+  .media-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  section {
+    padding: 3.5rem 1.2rem;
+  }
+}
+
+/* ── Móvil pequeño (≤ 420px) ── */
+@media (max-width: 420px) {
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}

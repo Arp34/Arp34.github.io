@@ -1,0 +1,91 @@
+/*events.css — Sección de eventos y tabla*/
+
+.events {
+    background: var(--black_gray);
+}
+
+.events .section-title {
+    color:var(--white);
+}
+
+.events .section-sub {
+    color: var(--text);
+}
+
+/* ── Table wrapper ── */
+.table-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    overflow-x: auto;
+    border-radius: 6px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--black);
+    font-size: 0.9rem;
+}
+
+/* ── thead ── */
+thead {
+  background: var(--red);
+}
+
+thead th {
+  color: var(--white);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  padding: 1rem 1.2rem;
+  text-align: left;
+}
+
+/* ── tbody ── */
+tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color 0.15s;
+}
+
+tbody tr:hover {
+  background: rgba(200, 58, 58, 0.07);
+}
+
+tbody td {
+  color: var(--text);
+  padding: 0.9rem 1.2rem;
+}
+
+tbody td:first-child {
+  font-weight: 500;
+  color: var(--white);
+}
+
+/* ── Badges ── */
+.badge {
+  display: inline-block;
+  background: var(--black_red);
+  color: var(--white_gray);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.badge:hover {
+  background: var(--red_hover);
+}
+
+.badge.sold {
+    background: transparent;
+    border: 1px solid var(--white_gray);
+    color: var(--white_gray);
+    cursor: default;
+}
+

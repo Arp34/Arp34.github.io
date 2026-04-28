@@ -1,0 +1,65 @@
+/*hero.css — Hero / banner principal*/
+.hero {
+    position:relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: var(--black_gray);
+}
+
+.hero-bg {
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(ellipse at 30% 60%, rgba(200, 58, 58, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 20%, rgba(92, 46, 46, 0.5) 0%, transparent 50%),
+    url('/img/img-9.jpg') center / cover no-repeat;
+    filter:brightness(0.45);
+}
+
+.hero-content {
+    position:relative;
+    z-index:2;
+    padding: 2rem;
+}
+
+.hero-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 1.2rem;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+}
+
+.hero h1 em {
+    color: var(--red);
+    font-style: italic;
+}
+
+.hero p {
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 300;
+    max-width: 480px;
+    margin: 0 auto 2.2rem;
+    line-height: 1.7;
+}
+
