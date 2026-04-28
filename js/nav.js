@@ -1,7 +1,7 @@
 /* nav.js — Hamburger menu toggle*/
 
 const hamburger = document.getElementById('hamburger');
-const mobileNav = document.getElementById('mobileNav');
+const mobileNav = document.getElementById('mobilenav');
 
 // Abrir / cerrar menú al hacer clic en el botón
 hamburger.addEventListener('click', () => {

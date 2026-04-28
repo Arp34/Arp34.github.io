@@ -109,3 +109,7 @@ nav a:hover {
 .mobile-nav a:hover {
   color: var(--red);
 }
+
+.mobile-nav.open {
+  display: flex;
+}
