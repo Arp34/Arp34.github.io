@@ -34,6 +34,10 @@ assets/cv/          Hoja de vida en PDF
 
 No hace falta tocar el HTML: `main.js` pinta la lista a partir de esos datos.
 
+## Al cambiar el CSS o el JavaScript
+
+En `index.html`, los enlaces llevan un número de versión: `css/styles.css?v=2`, `js/main.js?v=2`, `js/content.js?v=2`. Cuando cambies alguno de esos archivos, sube el número (`?v=3`). Así los navegadores y GitHub Pages no usan la copia antigua que tienen guardada en caché.
+
 ## Verlo en local
 
 Abre `index.html` en el navegador o, mejor, sirve la carpeta:
