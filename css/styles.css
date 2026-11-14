@@ -924,6 +924,86 @@ p {
   color: var(--ink-soft);
 }
 
+/* ---------- Impresión (Ctrl + P / guardar como PDF) ---------- */
+@media print {
+  /* Siempre tinta negra sobre papel blanco, aunque se esté en modo oscuro.
+     El :not(#print) solo sube la especificidad para ganar a las reglas
+     del modo oscuro de arriba. */
+  :root:not(#print),
+  :root[data-theme]:not(#print) {
+    --desk: #ffffff;
+    --paper: #ffffff;
+    --ink: #000000;
+    --ink-soft: #333333;
+    --rule-soft: #bbbbbb;
+    --accent: #c2410c;
+    --tint: #fff1e8;
+    --ok: #1d7446;
+  }
+
+  @page {
+    margin: 14mm;
+  }
+
+  body {
+    font-size: 10.5pt;
+  }
+
+  .topbar,
+  .skip,
+  .actions,
+  #copy-email,
+  .mail__done {
+    display: none !important;
+  }
+
+  .sheet,
+  .foot {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .foot {
+    padding-top: 2rem;
+  }
+
+  .docstrip::before {
+    animation: none;
+  }
+
+  .band {
+    padding-top: 1.75rem;
+  }
+
+  /* En papel no se puede hacer clic: se escribe la dirección del enlace */
+  .project__link::after,
+  .links a::after {
+    content: " (" attr(href) ")";
+    font-weight: 400;
+    color: var(--ink-soft);
+  }
+
+  .project__link .icon,
+  .links .icon {
+    display: none;
+  }
+
+  /* Que ningún proyecto, fila o dato clave quede partido entre dos páginas */
+  .project,
+  .table tr,
+  .fig,
+  .specs {
+    break-inside: avoid;
+  }
+
+  .sec,
+  .sec--big {
+    break-after: avoid;
+  }
+}
+
 /* ---------- 10. Movimiento reducido ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
