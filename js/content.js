@@ -21,7 +21,7 @@ const STACK = [
   { id: "data", items: ["PostgreSQL", "MySQL", "TypeORM", "Sequelize"] },
   { id: "tools", items: ["Docker", "Git", "GitHub Actions", "Swagger", "Jest", "Vitest"] },
   { id: "frontend", items: ["HTML", "CSS", "JavaScript", "Tailwind"] },
-  { id: "learning", items: ["Angular", "Java"], learning: true },
+  { id: "learning", items: ["Angular", "Spark"], learning: true },
 ];
 
 // Del proyecto más completo al más sencillo; "ref" es su código en la tabla
