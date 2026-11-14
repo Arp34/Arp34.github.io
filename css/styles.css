@@ -950,12 +950,30 @@ p {
     font-size: 10.5pt;
   }
 
+  /* Fuera en papel: navegación, botones, el CV (ruta relativa, inútil
+     impresa) y la firma ("Pág. 1/1" no es verdad si salen varias hojas) */
   .topbar,
   .skip,
   .actions,
   #copy-email,
-  .mail__done {
+  .mail__done,
+  .links li:has(a[download]),
+  .foot__signature {
     display: none !important;
+  }
+
+  /* El ancho del papel activaría el diseño de tablet: se fuerzan las dos columnas */
+  .hero__grid {
+    grid-template-columns: 1fr 15rem;
+    gap: 2rem;
+  }
+
+  .hero__aside {
+    display: block;
+  }
+
+  .hero__role {
+    margin-bottom: 1.5rem;
   }
 
   .sheet,
