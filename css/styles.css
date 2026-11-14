@@ -263,8 +263,9 @@ p {
     padding-inline: 0.5rem;
   }
 
-  /* La referencia ya sale en la barra: no repetirla en la tira del documento */
-  .docstrip span:first-child {
+  /* La referencia ya sale en la barra: no repetirla en la tira del documento
+     (solo cuando hay barra; la página 404 no la tiene) */
+  .topbar + .sheet .docstrip span:first-child {
     display: none;
   }
 
