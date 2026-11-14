@@ -938,6 +938,7 @@ p {
     --ink-soft: #333333;
     --rule-soft: #bbbbbb;
     --accent: #c2410c;
+    --on-accent: #ffffff;
     --tint: #fff1e8;
     --ok: #1d7446;
   }
