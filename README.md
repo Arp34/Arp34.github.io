@@ -1,103 +1,51 @@
-# Portafolio Personal - Axel Ruiz Polo
+# Axel Ruiz Polo · Portafolio
 
-Página web personal que presenta el perfil profesional, habilidades técnicas y proyectos de Axel Ruiz Polo.
+Portafolio personal de Axel Ruiz Polo, desarrollador Full Stack Junior en Barranquilla, Colombia.
 
-## Enlace al sitio
+**Ver en vivo:** https://arp34.github.io/
 
-[**Visitar portafolio**](https://arp34.github.io/)
+## Idea
 
-## Descripción
+La página es una *ficha técnica* (datasheet), como la hoja de especificaciones de un componente: bloque de título, características, datos clave, especificaciones, una tabla de proyectos y un historial de revisiones con mi trayectoria.
 
-Este es un portafolio web desarrollado con **HTML5**, **CSS3** y **JavaScript**. El sitio incluye una sección de perfil, habilidades técnicas, proyectos realizados y una galería de mascotas como sección adicional.
+## Tecnologías
 
-## Tecnologías utilizadas
+HTML, CSS y JavaScript sin frameworks ni paso de compilación. Se publica tal cual con GitHub Pages.
 
-| Tecnología |                            Uso                             |
-|------------|------------------------------------------------------------|
-| HTML5      | Estructura semántica del sitio                             |
-| CSS3       | Estilos, diseño responsivo, variables CSS                  |
-| JavaScript | Interactividad (menú hamburguesa, modales, notificaciones) |
+- Español e inglés, con botón para cambiar de idioma (se recuerda con `localStorage`).
+- Modo claro y oscuro (sigue el del sistema y recuerda la elección).
+- Diseño adaptable (móvil y escritorio), navegable con teclado y respetando `prefers-reduced-motion`.
 
-## 📁 Estructura del proyecto
+## Estructura
 
 ```
-Arp/
-├── index.html              # Página principal del portafolio
-├── public/
-│   └── img/                # Imágenes del proyecto
-│       ├── OK.jpeg         # Foto de perfil
-│       ├── Html.png        # Icono HTML
-│       ├── Css.png         # Icono CSS
-│       ├── python.png      # Icono Python
-│       └── gato*.webp/jpg  # Imágenes de mascotas
-├── src/
-│   ├── css/
-│   │   ├── base.css        # Variables, tipografía y estilos base
-│   │   ├── layout.css      # Estilos del header y navegación
-│   │   ├── components.css  # Botones, formularios, inputs
-│   │   ├── pages.css       # Estilos de secciones específicas
-│   │   ├── modals.css      # Estilos de ventanas modales
-│   │   ├── mascotas.css    # Estilos de la página de mascotas
-│   │   └── js.css          # Estilos relacionados con JS
-│   ├── js/
-│   │   └── script.js       # Funcionalidad interactiva
-│   └── views/
-│       └── mascotas.html   # Página de galería de mascotas
+index.html          Estructura de la página
+css/styles.css      Todos los estilos (variables de color y fuentes al principio)
+js/content.js       Todo el texto (ES/EN), proyectos, stack y trayectoria
+js/main.js          Idioma, tema, listas y tablas, y botón de copiar correo
+assets/img/         Foto y favicon
+assets/cv/          Hoja de vida en PDF
 ```
 
-## Características
+## Cómo añadir un proyecto
 
-- **Diseño responsivo**: Se adapta a diferentes tamaños de pantalla (mobile, tablet, desktop)
-- **Navegación sticky**: El header permanece fijo al hacer scroll
-- **Menú hamburguesa**: Navegación colapsable en dispositivos móviles
-- **Ventanas modales**: Información detallada de proyectos
-- **Efectos visuales**: Transiciones, sombras y animaciones
-- **Tema oscuro**: Diseño con colores oscuros para mejor lectura
+1. Añade un objeto al array `PROJECTS` de `js/content.js` (`id`, `ref`, `name`, `repo`, `tech`).
+2. Añade sus textos `projects.<id>.kind`, `.desc` y `.role` en `TEXT.es` y en `TEXT.en`.
 
-## 📱 Secciones del sitio
+No hace falta tocar el HTML: `main.js` pinta la lista a partir de esos datos.
 
-1. **Perfil**: Foto y descripción personal
-2. **Sobre mí**: Información biográfica con opción de expandir
-3. **Habilidades técnicas**: Iconos de HTML, CSS y Python
-4. **Otras habilidades**: Lista de habilidades administrativas
-5. **Proyectos**: Sistema de inventario (Python) y Portafolio web
-6. **Contacto**: Formulario de contacto
-7. **Mascotas**: Galería de fotos de mascotas (página adicional)
+## Verlo en local
 
-## 🚀 Cómo ver el proyecto
+Abre `index.html` en el navegador o, mejor, sirve la carpeta:
 
-1. Clona el repositorio o descarga los archivos
-2. Abre `index.html` en tu navegador web
-3. Navega por las diferentes secciones
-
-## 📝 Estilos CSS
-
-El proyecto utiliza **variables CSS** para mantener consistencia:
-
-```css
-:root {
-    --fondo-oscuro: #0a0a0a;
-    --fondo-tarjeta: #111111;
-    --color-texto: #ffffff;
-    --borde: #222222;
-}
+```bash
+python -m http.server 5500
 ```
 
-## 🔧 Personalización
+y entra a http://localhost:5500.
 
-### Colores
-Modifica las variables en `src/css/base.css` para cambiar el tema.
+## Contacto
 
-### Agregar proyectos
-Añade nuevos elementos `<li class="proyecto">` en `index.html` dentro de la sección de proyectos.
-
-### Agregar mascotas
-Añade nuevas imágenes en `public/img/` y crea nuevos elementos en `src/views/mascotas.html`.
-
-## 📄 Licencia
-
-Este proyecto es de uso personal y educativo.
-
----
-
-Desarrollado por Axel Ruiz Polo
+- Correo: axelpolo3477@gmail.com
+- LinkedIn: https://www.linkedin.com/in/axel-ruiz-polo/
+- GitHub: https://github.com/Arp34
