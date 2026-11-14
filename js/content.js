@@ -75,6 +75,7 @@ const TEXT = {
     "nav.lang": "English",
     "nav.themeDark": "Activar modo oscuro",
     "nav.themeLight": "Activar modo claro",
+    "nav.sections": "Secciones",
     "nav.menuOpen": "Abrir menú",
     "nav.menuClose": "Cerrar menú",
 
@@ -183,6 +184,7 @@ const TEXT = {
     "nav.lang": "Español",
     "nav.themeDark": "Switch to dark mode",
     "nav.themeLight": "Switch to light mode",
+    "nav.sections": "Sections",
     "nav.menuOpen": "Open menu",
     "nav.menuClose": "Close menu",
 

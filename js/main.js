@@ -8,13 +8,18 @@ function t(key) {
   return TEXT[lang][key] ?? TEXT.es[key] ?? key;
 }
 
+// Idioma inicial: el que eligió la persona (guardado) o, si es su primera
+// visita, el de su navegador: español si lo usa, inglés en cualquier otro caso.
 // localStorage puede fallar (modo privado, cookies bloqueadas): por eso el try/catch
 function loadLang() {
   try {
-    return localStorage.getItem(STORAGE_KEY) === "en" ? "en" : "es";
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === "es" || saved === "en") return saved;
   } catch {
-    return "es";
+    /* sin almacenamiento: se decide por el navegador */
   }
+  const languages = navigator.languages || [navigator.language || "es"];
+  return languages.some((code) => code.toLowerCase().startsWith("es")) ? "es" : "en";
 }
 
 function saveLang(value) {
@@ -120,6 +125,9 @@ function applyLang(value) {
 
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     node.textContent = t(node.dataset.i18n);
+  });
+  document.querySelectorAll("[data-i18n-aria]").forEach((node) => {
+    node.setAttribute("aria-label", t(node.dataset.i18nAria));
   });
   document.querySelectorAll("[data-i18n-alt]").forEach((node) => {
     node.alt = t(node.dataset.i18nAlt);
