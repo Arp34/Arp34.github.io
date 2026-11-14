@@ -1,0 +1,855 @@
+/* ==========================================================
+   Portafolio de Axel Ruiz Polo: "ficha técnica" (datasheet)
+   La página es la hoja de especificaciones de un componente:
+   bloque de título, características, datos clave, tablas,
+   historial de revisiones. Papel, tinta, líneas finas de 1px
+   y un único color de señal (naranja) para lo importante.
+   ========================================================== */
+
+/* ---------- 1. Variables ----------
+   Los colores tienen nombre de FUNCIÓN, no de color: el modo oscuro
+   solo cambia sus valores y ninguna regla de abajo cambia. */
+:root {
+  --desk: #e7e7e3;          /* la mesa sobre la que está la hoja */
+  --paper: #fbfbf9;         /* la hoja */
+  --ink: #131416;           /* texto principal y reglas fuertes */
+  --ink-soft: #50545a;      /* texto secundario */
+  --rule-soft: #d4d5d2;     /* líneas finas entre filas */
+  --accent: #c2410c;        /* naranja de señal: acciones y destacados */
+  --accent-hover: #9a3412;
+  --on-accent: #ffffff;
+  --tint: #fff1e8;          /* fondo de la fila destacada */
+  --ok: #1d7446;            /* "disponible" */
+
+  --font-sans: "Archivo", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --gutter: clamp(1rem, 4vw, 3.5rem);
+  --max: 76rem;
+  --radius: 2px;
+
+  color-scheme: light;
+}
+
+/* Modo oscuro: hoja de grafito, tinta clara, el mismo naranja más luminoso */
+:root[data-theme="dark"] {
+  --desk: #0b0c0e;
+  --paper: #121417;
+  --ink: #e9eaec;
+  --ink-soft: #a3a8b0;
+  --rule-soft: #2c3036;
+  --accent: #ff8a4c;
+  --accent-hover: #ffa574;
+  --on-accent: #121417;
+  --tint: #24180f;
+  --ok: #5fd08f;
+  color-scheme: dark;
+}
+
+/* Sin elección guardada, se sigue el tema del sistema */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --desk: #0b0c0e;
+    --paper: #121417;
+    --ink: #e9eaec;
+    --ink-soft: #a3a8b0;
+    --rule-soft: #2c3036;
+    --accent: #ff8a4c;
+    --accent-hover: #ffa574;
+    --on-accent: #121417;
+    --tint: #24180f;
+    --ok: #5fd08f;
+    color-scheme: dark;
+  }
+}
+
+/* ---------- 2. Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem; /* que la barra fija no tape los títulos al saltar */
+  scrollbar-color: var(--ink-soft) var(--desk);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink);
+  caret-color: var(--accent);
+  background: var(--desk);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.icon {
+  width: 1.1em;
+  height: 1.1em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip {
+  position: absolute;
+  left: var(--gutter);
+  top: -4rem;
+  z-index: 20;
+  padding: 0.5rem 1rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.skip:focus {
+  top: 0.75rem;
+}
+
+/* ---------- 3. Barra superior ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem var(--gutter);
+  background: var(--desk);
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.topbar__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.75rem;
+}
+
+.topbar__nav a {
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  padding-block: 0.3rem;
+  border-bottom: 1px solid transparent;
+}
+
+.topbar__nav a:hover {
+  border-bottom-color: var(--ink);
+}
+
+.topbar__tools {
+  display: flex;
+  flex: none;
+  gap: 0.5rem;
+}
+
+.tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  min-height: 2.25rem;
+  padding: 0.3rem 0.75rem;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.tool:hover {
+  border-color: var(--ink);
+}
+
+#theme-toggle {
+  padding-inline: 0.5rem;
+}
+
+/* El botón de tema enseña la luna en claro y el sol en oscuro */
+.icon--sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .icon--sun {
+  display: block;
+}
+
+:root[data-theme="dark"] .icon--moon {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .icon--sun {
+    display: block;
+  }
+
+  :root:not([data-theme="light"]) .icon--moon {
+    display: none;
+  }
+}
+
+@media (max-width: 40rem) {
+  .topbar__nav {
+    flex-wrap: nowrap;
+    gap: 1rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    white-space: nowrap;
+  }
+}
+
+/* ---------- 4. La hoja ---------- */
+.sheet {
+  max-width: var(--max);
+  margin: clamp(0rem, 3vw, 2rem) auto 0;
+  padding: clamp(1.25rem, 4vw, 3.5rem) var(--gutter) 0;
+  background: var(--paper);
+  border: 1px solid var(--rule-soft);
+  border-bottom: 0;
+}
+
+/* Tira de documento: referencia, tipo y revisión, como en un datasheet.
+   La regla gruesa de arriba se "dibuja" al cargar (el único movimiento). */
+.docstrip {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+  padding-block: 0.9rem 0.75rem;
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+
+.docstrip::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: var(--ink);
+  transform-origin: left;
+  animation: draw 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes draw {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+/* Títulos de sección numerados, como los apartados de un datasheet */
+.sec {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ink);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sec__num {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.sec--big {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  font-stretch: 80%;
+  letter-spacing: -0.01em;
+  border-bottom-width: 2px;
+}
+
+.sec--big .sec__num {
+  font-size: 0.55em;
+}
+
+.band {
+  padding-block: clamp(3rem, 7vw, 5rem) 0;
+}
+
+.band__intro {
+  margin: 0 0 1.5rem;
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+
+/* ---------- 5. Botones ---------- */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0 clamp(2rem, 5vw, 3.5rem);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 1.15rem;
+  font: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--ink);
+  background: transparent;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.15s ease-out, color 0.15s ease-out, border-color 0.15s ease-out;
+}
+
+.btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.btn--primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--on-accent);
+}
+
+/* ---------- 6. Primera página: nombre, características y datos ---------- */
+.hero__name {
+  margin: clamp(1.5rem, 4vw, 2.5rem) 0 0.4rem;
+  font-size: clamp(2.75rem, 9vw, 6rem);
+  font-weight: 800;
+  font-stretch: 72%;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.hero__role {
+  margin: 0;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(15rem, 21rem);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+.hero__main .sec + * {
+  margin-top: 0;
+}
+
+.features {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+}
+
+.features li {
+  display: flex;
+  gap: 0.75rem;
+  padding-block: 0.45rem;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+/* Viñeta cuadrada, como en las listas de un datasheet */
+.features li::before {
+  content: "";
+  flex: none;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-top: 0.6rem;
+  background: var(--accent);
+}
+
+.hero__lead {
+  margin: 0;
+  max-width: 60ch;
+  font-size: 1.125rem;
+}
+
+.fig {
+  margin: 0;
+  border: 1px solid var(--ink);
+}
+
+/* height: auto anula el height="1024" del HTML (que solo sirve para
+   reservar el hueco al cargar); si no, la foto mide 1024px de alto */
+.fig img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.fig figcaption {
+  padding: 0.45rem 0.6rem;
+  border-top: 1px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+}
+
+/* Datos clave: pares clave / valor en una rejilla de dos columnas */
+.specs {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  margin: 1.25rem 0 0;
+  border-top: 2px solid var(--ink);
+}
+
+.specs dt,
+.specs dd {
+  margin: 0;
+  padding-block: 0.5rem;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.specs dt {
+  padding-right: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  line-height: 1.9;
+}
+
+.specs dd {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.specs__status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ok);
+}
+
+.specs__status::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--ok);
+}
+
+@media (max-width: 52rem) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* En pantallas estrechas: foto pequeña al lado de los datos clave */
+  .hero__aside {
+    display: grid;
+    grid-template-columns: minmax(7rem, 11rem) 1fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  .specs {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 30rem) {
+  .hero__aside {
+    grid-template-columns: 1fr;
+  }
+
+  .fig {
+    max-width: 12rem;
+  }
+}
+
+/* ---------- 7. Tablas (especificaciones e historial) ---------- */
+.table-wrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.75rem 1rem 0.75rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.table thead th {
+  padding-block: 0.5rem;
+  border-bottom: 2px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+}
+
+.table tbody th {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.table .status {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.table .is-learning .status,
+.table .is-learning th {
+  color: var(--accent);
+}
+
+.table--path .rev {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  width: 3.5rem;
+}
+
+.table--path .date {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  width: 12rem;
+}
+
+.table--path td p {
+  margin: 0.2rem 0 0;
+  color: var(--ink-soft);
+}
+
+.table--path .is-pending .rev,
+.table--path .is-pending strong {
+  color: var(--accent);
+}
+
+/* En móvil, cada fila de tabla se convierte en un bloque */
+@media (max-width: 40rem) {
+  .table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .table tr {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.15rem 1rem;
+    padding-block: 0.75rem;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+
+  .table th,
+  .table td {
+    padding: 0;
+    border: 0;
+  }
+
+  .table--stack td:nth-child(2) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .table--stack .status {
+    justify-self: end;
+  }
+
+  .table--path td:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .table--path .rev,
+  .table--path .date {
+    width: auto;
+  }
+
+  .table tbody tr:first-child {
+    border-top: 2px solid var(--ink);
+  }
+}
+
+/* ---------- 8. Proyectos: tabla de referencias ---------- */
+.projects {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--ink);
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 7rem minmax(12rem, 16rem) 1fr;
+  gap: 0.5rem 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.project__ref {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.project__badge {
+  padding: 0.1rem 0.4rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.project__head h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  font-stretch: 85%;
+}
+
+.project__kind {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.project__body p {
+  margin: 0 0 0.75rem;
+  max-width: 65ch;
+}
+
+.project__role strong {
+  font-weight: 700;
+}
+
+.project__tech {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.project__tech li {
+  padding: 0.1rem 0.45rem;
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--radius);
+}
+
+.project__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.project__link:hover {
+  color: var(--accent-hover);
+}
+
+/* El proyecto destacado: fondo teñido, a todo el ancho de la hoja */
+.project--featured {
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  background: var(--tint);
+}
+
+.project--featured .project__head h3 {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+}
+
+@media (max-width: 52rem) {
+  .project {
+    grid-template-columns: 1fr;
+  }
+
+  .project__ref {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* ---------- 9. Pie: contacto, en la misma hoja ---------- */
+.foot {
+  max-width: var(--max);
+  margin: 0 auto clamp(0rem, 3vw, 2rem);
+  padding: clamp(3rem, 7vw, 5rem) var(--gutter) 1.5rem;
+  background: var(--paper);
+  border: 1px solid var(--rule-soft);
+  border-top: 0;
+}
+
+.foot__lead {
+  margin: 0 0 1.5rem;
+  color: var(--ink-soft);
+}
+
+.mail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+}
+
+.mail__address {
+  font-size: clamp(1.4rem, 4.5vw, 2.4rem);
+  font-weight: 800;
+  font-stretch: 80%;
+  overflow-wrap: anywhere;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--accent);
+}
+
+.mail__done {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ok);
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+}
+
+.links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.foot__signature {
+  margin: 2.5rem 0 0;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+
+/* En móvil la hoja ocupa toda la pantalla: sin bordes ni mesa alrededor */
+@media (max-width: 40rem) {
+  body {
+    background: var(--paper);
+  }
+
+  .topbar {
+    background: var(--paper);
+  }
+
+  .sheet,
+  .foot {
+    border: 0;
+    margin: 0;
+  }
+}
+
+/* ---------- 10. Movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}
