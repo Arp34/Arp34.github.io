@@ -521,13 +521,16 @@ p {
   }
 }
 
+/* En móvil la foto va centrada y los datos clave debajo, a todo el ancho */
 @media (max-width: 30rem) {
   .hero__aside {
     grid-template-columns: 1fr;
   }
 
   .fig {
-    max-width: 12rem;
+    width: 100%;
+    max-width: 14rem;
+    margin-inline: auto;
   }
 }
 
