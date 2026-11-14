@@ -906,6 +906,24 @@ p {
   }
 }
 
+/* ---------- Página 404 ---------- */
+.error {
+  margin-bottom: clamp(0rem, 3vw, 2rem);
+  padding-bottom: clamp(3rem, 8vw, 5rem);
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.error__code {
+  margin-top: clamp(2rem, 6vw, 4rem);
+  font-size: clamp(6rem, 22vw, 11rem);
+  color: var(--accent);
+}
+
+.error__en {
+  margin: 0.25rem 0 0;
+  color: var(--ink-soft);
+}
+
 /* ---------- 10. Movimiento reducido ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
