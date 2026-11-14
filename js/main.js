@@ -134,6 +134,7 @@ function applyLang(value) {
   renderProjects();
   renderPath();
   updateThemeButton(); // su etiqueta también depende del idioma
+  setMenu(isMenuOpen()); // y la del botón de menú
 }
 
 // ---------- Tema claro / oscuro ----------
@@ -195,5 +196,40 @@ copyButton.addEventListener("click", async () => {
   clearTimeout(copyTimer);
   copyTimer = setTimeout(() => (copyStatus.textContent = ""), 2500);
 });
+
+// ---------- Menú del móvil ----------
+// En pantallas estrechas los enlaces van en un panel que se abre con ☰.
+// La clase "is-open" en la barra lo muestra; aria-expanded se lo dice
+// a los lectores de pantalla.
+const topbar = document.querySelector(".topbar");
+const menuButton = document.getElementById("menu-toggle");
+
+function isMenuOpen() {
+  return topbar.classList.contains("is-open");
+}
+
+function setMenu(open) {
+  topbar.classList.toggle("is-open", open);
+  menuButton.setAttribute("aria-expanded", String(open));
+  menuButton.setAttribute("aria-label", t(open ? "nav.menuClose" : "nav.menuOpen"));
+}
+
+menuButton.addEventListener("click", () => setMenu(!isMenuOpen()));
+
+// Al elegir un enlace, el menú se cierra y se ve la sección
+document.querySelectorAll(".topbar__nav a").forEach((link) => {
+  link.addEventListener("click", () => setMenu(false));
+});
+
+// Esc cierra el menú y devuelve el foco al botón
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && isMenuOpen()) {
+    setMenu(false);
+    menuButton.focus();
+  }
+});
+
+// Si la pantalla se ensancha (girar el móvil), el menú desplegable ya no aplica
+window.matchMedia("(min-width: 40.01rem)").addEventListener("change", () => setMenu(false));
 
 applyLang(loadLang());

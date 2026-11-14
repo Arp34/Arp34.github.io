@@ -75,6 +75,8 @@ const TEXT = {
     "nav.lang": "English",
     "nav.themeDark": "Activar modo oscuro",
     "nav.themeLight": "Activar modo claro",
+    "nav.menuOpen": "Abrir menú",
+    "nav.menuClose": "Cerrar menú",
 
     "doc.type": "Ficha técnica",
     "doc.rev": "Rev. 2026.11",
@@ -181,6 +183,8 @@ const TEXT = {
     "nav.lang": "Español",
     "nav.themeDark": "Switch to dark mode",
     "nav.themeLight": "Switch to light mode",
+    "nav.menuOpen": "Open menu",
+    "nav.menuClose": "Close menu",
 
     "doc.type": "Datasheet",
     "doc.rev": "Rev. 2026.11",

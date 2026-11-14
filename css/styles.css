@@ -237,13 +237,72 @@ p {
   }
 }
 
+/* La marca y el botón de menú solo existen en móvil */
+.topbar__brand,
+.topbar__menu {
+  display: none;
+}
+
+.icon--close {
+  display: none;
+}
+
+/* ---------- Barra en móvil: marca + herramientas + menú desplegable ---------- */
 @media (max-width: 40rem) {
+  .topbar__brand {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+  }
+
+  .topbar__menu {
+    display: inline-flex;
+    padding-inline: 0.5rem;
+  }
+
+  /* La referencia ya sale en la barra: no repetirla en la tira del documento */
+  .docstrip span:first-child {
+    display: none;
+  }
+
+  /* El panel cuelga justo debajo de la barra (que es sticky, así que
+     sirve de referencia para position: absolute) */
   .topbar__nav {
-    flex-wrap: nowrap;
-    gap: 1rem;
-    overflow-x: auto;
-    scrollbar-width: none;
-    white-space: nowrap;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.25rem var(--gutter) 0.75rem;
+    background: var(--paper);
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .topbar.is-open .topbar__nav {
+    display: flex;
+  }
+
+  .topbar__nav a {
+    padding-block: 0.9rem;
+    font-size: 1.05rem;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+
+  .topbar__nav a:last-child {
+    border-bottom: 0;
+  }
+
+  .topbar.is-open .icon--open {
+    display: none;
+  }
+
+  .topbar.is-open .icon--close {
+    display: block;
   }
 }
 
