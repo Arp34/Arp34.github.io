@@ -724,6 +724,7 @@ p {
   display: grid;
   grid-template-columns: 7rem minmax(12rem, 16rem) 1fr;
   gap: 0.5rem 2rem;
+  align-items: center; /* código y título centrados en vertical junto al texto */
   padding: 1.5rem 0;
   border-bottom: 1px solid var(--rule-soft);
 }
@@ -802,11 +803,71 @@ p {
 .project--featured {
   margin-inline: calc(var(--gutter) * -1);
   padding-inline: var(--gutter);
-  background: var(--tint);
+  /* el fondo teñido lo pinta su capa ::before (más abajo), para poder apagarlo */
 }
 
 .project--featured .project__head h3 {
   font-size: clamp(1.6rem, 3vw, 2rem);
+}
+
+/* Al pasar el cursor (o enfocar con el teclado) cualquier proyecto se tiñe
+   como el destacado y su título crece. El tono va en una capa ::before detrás
+   de la tarjeta, que llega hasta el borde de la hoja igual que el destacado. */
+.project {
+  position: relative;
+  isolation: isolate; /* para que la capa z-index:-1 quede detrás del texto, no de la página */
+}
+
+.project::before {
+  content: "";
+  position: absolute;
+  inset: 0 calc(var(--gutter) * -1);
+  z-index: -1;
+  background: var(--tint);
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+/* El destacado ya llega al borde de la hoja: su capa no debe salirse más.
+   Además empieza encendido: es el naranja "por defecto". */
+.project--featured::before {
+  inset: 0;
+  opacity: 1;
+}
+
+/* Si el cursor o el foco está en OTRA tarjeta, el destacado se apaga y el
+   naranja "se mueve" a esa. :has() deja que la lista pregunte por sus hijas. */
+.projects:has(.project:focus-within) .project--featured:not(:focus-within)::before {
+  opacity: 0;
+}
+
+@media (hover: hover) {
+  .projects:has(.project:hover) .project--featured:not(:hover)::before {
+    opacity: 0;
+  }
+}
+
+.project__head h3 {
+  transform-origin: left center;
+  transition: transform 0.2s ease-out;
+}
+
+.project:focus-within::before {
+  opacity: 1;
+}
+
+.project:focus-within .project__head h3 {
+  transform: scale(1.08);
+}
+
+@media (hover: hover) {
+  .project:hover::before {
+    opacity: 1;
+  }
+
+  .project:hover .project__head h3 {
+    transform: scale(1.08);
+  }
 }
 
 @media (max-width: 52rem) {

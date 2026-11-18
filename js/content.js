@@ -28,11 +28,18 @@ const STACK = [
 const PROJECTS = [
   {
     id: "restaurant",
-    ref: "P-04",
+    ref: "P-05",
     name: "Restaurant API",
     repo: "https://github.com/Arp34/Proyecto-NestJS",
     tech: ["NestJS", "TypeORM", "PostgreSQL", "Passport + JWT", "Jest", "GitHub Actions"],
     featured: true,
+  },
+  {
+    id: "edulogic",
+    ref: "P-04",
+    name: "EduLogic",
+    repo: "https://github.com/DylanSrz/EduLogic",
+    tech: ["JavaScript", "HTML", "Tailwind", "FastAPI", "PostgreSQL", "JWT"],
   },
   {
     id: "fleetcore",
@@ -132,6 +139,11 @@ const TEXT = {
       "API para gestionar un restaurante: mesas, reservas, clientes, productos y categorías. Quedó inconclusa porque nos cambiaron de equipo.",
     "projects.restaurant.role":
       "Lideré el proyecto en un equipo de 5 personas: lo inicié, hice la base de autenticación, el manejo global de errores, el módulo de categorías con tests y el CI, y revisé la mayoría de los pull requests.",
+    "projects.edulogic.kind": "En equipo · Frontend",
+    "projects.edulogic.desc":
+      "Proyecto integrador: plataforma de aprendizaje STEM con cursos, lecciones y cuestionarios que se corrigen al instante y explican cada error. Está publicada en edulogic.pro.",
+    "projects.edulogic.role":
+      "Trabajé en el frontend en un equipo de 6 personas: creé la estructura base del repositorio y del frontend, el módulo central que se conecta con la API (fetch + JWT), las vistas de detalle de curso y de lección, y el panel «Mi progreso» del estudiante.",
     "projects.fleetcore.kind": "Individual · Backend",
     "projects.fleetcore.desc":
       "API REST para el mantenimiento preventivo y correctivo de una flota de vehículos, con historial de cambios de estado.",
@@ -241,6 +253,11 @@ const TEXT = {
       "API to manage a restaurant: tables, bookings, customers, products and categories. Unfinished because our team was reassigned.",
     "projects.restaurant.role":
       "I led the project in a team of 5: I started it and built the authentication base, global error handling, the categories module with tests and the CI, and reviewed most pull requests.",
+    "projects.edulogic.kind": "Team · Frontend",
+    "projects.edulogic.desc":
+      "Capstone project: a STEM learning platform with courses, lessons and quizzes that are graded instantly and explain every mistake. Live at edulogic.pro.",
+    "projects.edulogic.role":
+      "I worked on the frontend in a team of 6: I set up the base structure of the repo and the frontend, the central module that talks to the API (fetch + JWT), the course and lesson detail views, and the student's “My progress” panel.",
     "projects.fleetcore.kind": "Solo · Backend",
     "projects.fleetcore.desc":
       "REST API for preventive and corrective maintenance of a vehicle fleet, with a history of status changes.",
